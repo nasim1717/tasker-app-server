@@ -7,8 +7,10 @@ const userRoute = require("./routes/userRoutes");
 const tasksRoute = require("./routes/tasksRoute");
 
 const app = exppress();
-dotenv.config();
 app.use(exppress.json());
+dotenv.config();
+app.use(cors());
+
 
 
 // database connection with mongose
