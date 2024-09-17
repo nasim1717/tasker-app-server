@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const port = process.env.PORT || 5000;
 const { defaultError, notFound } = require("./common/errorHandler");
 const userRoute = require("./routes/userRoutes");
+const tasksRoute = require("./routes/tasksRoute");
 
 const app = exppress();
 dotenv.config();
@@ -18,6 +19,7 @@ mongoose
 
 // route handle
 app.use("/user", userRoute);
+app.use("/", tasksRoute);
 
 // not found route
 app.use(notFound);

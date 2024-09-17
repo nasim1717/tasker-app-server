@@ -8,7 +8,7 @@ async function signUp(req, res) {
     try {
         const existUser = await User.findOne({ email: req.body.email });
         if (existUser) {
-            res.status(404).json({
+            res.status(400).json({
                 status: false,
                 message: "Already user exist!"
             })
@@ -48,23 +48,24 @@ async function logIn(req, res) {
                 const token = jwt.sign({
                     name: findUser?.name,
                     email: findUser?.email,
+                    userId: findUser?._id
                 }, process.env.JWT_SECRET, {
                     expiresIn: "1h"
                 });
-                res.status(202).json({
+                res.status(200).json({
                     status: true,
                     message: "Login successful",
                     data: findUser,
                     accessToken: token,
                 })
             } else {
-                res.status(404).json({
+                res.status(400).json({
                     status: false,
                     message: "Invalid password"
                 });
             }
         } else {
-            res.status(404).json({
+            res.status(400).json({
                 status: false,
                 message: "User not found!"
             });
