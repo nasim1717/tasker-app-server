@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const exppress = require("express");
 const dotenv = require("dotenv");
+const cors = require('cors')
 const port = process.env.PORT || 5000;
 const { defaultError, notFound } = require("./common/errorHandler");
 const userRoute = require("./routes/userRoutes");
