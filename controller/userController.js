@@ -5,6 +5,7 @@ const userSchema = require("../schemas/userSchema");
 const User = mongoose.model("User", userSchema);
 
 async function signUp(req, res) {
+    console.log("user-->", req.body)
     try {
         const existUser = await User.findOne({ email: req.body.email });
         if (existUser) {
@@ -31,7 +32,7 @@ async function signUp(req, res) {
         res.status(500).json({
             error: err,
             status: false,
-            message: "Signup failed!"
+            message: "Signup failed! please try again."
         })
     }
 }
