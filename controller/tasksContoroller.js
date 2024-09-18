@@ -26,7 +26,7 @@ async function addTasks(req, res) {
 // editTasks
 async function editTasks(req, res) {
     try {
-        const resEditTask = await Task.findByIdAndUpdate({ _id: req.body.id }, { $set: { title: req.body.title, description: req.body.description } });
+        const resEditTask = await Task.findByIdAndUpdate({ _id: req.params.id }, { $set: { ...req.body } });
         res.status(200).json({
             status: true,
             message: "Update successfull!",

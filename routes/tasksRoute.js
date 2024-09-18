@@ -9,7 +9,7 @@ tasksRoute.get("/favourite", checkLogin, favourite);
 tasksRoute.get("/inprogerss", checkLogin, progress);
 tasksRoute.get("/complete", checkLogin, complete);
 tasksRoute.post("/addtasks", checkLogin, addTasks);
-tasksRoute.put("/edit", checkLogin, editTasks);
+tasksRoute.put("/edit/:id", checkLogin, editTasks);
 tasksRoute.delete("/delete/:id", checkLogin, deleteTasks);
 
 module.exports = tasksRoute;
