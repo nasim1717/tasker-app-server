@@ -23,7 +23,10 @@ const taskSchema = mongoose.Schema({
     },
     createAt: {
         type: Date,
-        default: Date.now()
+        default: function () {
+            const bangladeshOffset = 6 * 60 * 60 * 1000; // 6 ঘণ্টা (BST) মিলিসেকেন্ডে
+            return new Date(Date.now() + bangladeshOffset);
+        }
     },
     userId: {
         type: mongoose.Types.ObjectId,
