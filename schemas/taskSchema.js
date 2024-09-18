@@ -23,7 +23,7 @@ const taskSchema = mongoose.Schema({
     },
     createAt: {
         type: Date,
-        default: Date.now()
+        default: new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })
     },
     userId: {
         type: mongoose.Types.ObjectId,

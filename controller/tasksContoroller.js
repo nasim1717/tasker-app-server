@@ -26,13 +26,15 @@ async function addTasks(req, res) {
 // editTasks
 async function editTasks(req, res) {
     try {
-        const resEditTask = await Task.findByIdAndUpdate({ _id: req.params.id }, { $set: { ...req.body } });
+        const resEditTask = await Task.findByIdAndUpdate({ _id: req.params.id }, { $set: { ...req.body } }, { new: true });
         res.status(200).json({
             status: true,
             message: "Update successfull!",
             data: resEditTask,
-        })
+        });
+        // console.log("edit task-->", resEditTask);
     } catch (err) {
+        // console.log("err-->", err)
         res.status(500).json({
             status: false,
             message: "This goal not edit peease try again!",
